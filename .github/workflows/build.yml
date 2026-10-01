@@ -29,7 +29,11 @@ jobs:
     - name: Build APK with Buildozer
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        ANDROID_NDK_ROOT: ""
+        ANDROID_HOME: ""
       run: |
+        unset ANDROID_NDK_ROOT
+        unset ANDROID_HOME
         buildozer -v android debug
 
     - name: Upload APK Artifact
